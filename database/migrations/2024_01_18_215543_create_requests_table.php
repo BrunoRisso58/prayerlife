@@ -16,10 +16,12 @@ return new class extends Migration
             $table->string('name');
             $table->boolean('is_answered');
             $table->dateTime('answered_date');
+            $table->string('user_comments')->nullable();
             $table->foreignId('category_id')->constrained();
             $table->unsignedBigInteger('privacy_id');
             $table->foreign('privacy_id')->references('id')->on('privacy');
             $table->foreignId('user_id')->constrained();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
